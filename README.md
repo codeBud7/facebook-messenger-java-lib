@@ -3,7 +3,8 @@ Facebook Messenger Library for Java
 
 # Usage
 Implement MessengerProperties interface
-Example:
+
+*Example:*
 ```java
 @Config.Sources("classpath:messenger.properties")
 public interface MessengerProperties extends Config, com.codebud7.config.MessengerProperties
@@ -26,7 +27,8 @@ public interface MessengerProperties extends Config, com.codebud7.config.Messeng
 ```
 
 Create controller for verification
-Example:
+
+*Example:*
 ```java
     @RequestMapping(value = "/webhook", method = RequestMethod.GET)
     @ResponseBody
@@ -62,7 +64,8 @@ Example:
 ```
 
 Use the FacebookMessengerHandler in your service 
-Example:
+
+*Example:*
 ```java
     private FacebookMessengerHandler facebookMessengerHandler;
 
@@ -79,7 +82,7 @@ Example:
     }
 ```
 
-Todo's:
+# Todo's:
 * integration of token verification
 * integration of welcome message
 * integrate multiple message types
