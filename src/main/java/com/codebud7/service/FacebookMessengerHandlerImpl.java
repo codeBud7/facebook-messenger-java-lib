@@ -7,14 +7,14 @@ import com.mashape.unirest.http.Headers;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;
 import com.mashape.unirest.http.exceptions.UnirestException;
-import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 /**
  * Created by s.puskeiler on 09.05.16.
  */
-public class FacebookMessengerHandlerImpl implements FacebookMessengerHandler
+class FacebookMessengerHandlerImpl implements FacebookMessengerHandler
 {
     private static final Logger LOGGER = LoggerFactory.getLogger(FacebookMessengerHandler.class);
 
@@ -25,17 +25,24 @@ public class FacebookMessengerHandlerImpl implements FacebookMessengerHandler
     private final MessengerProperties messengerProperties;
 
 
-    public FacebookMessengerHandlerImpl(final MessengerProperties messengerProperties)
+    FacebookMessengerHandlerImpl(final MessengerProperties messengerProperties)
     {
         this.messengerProperties = messengerProperties;
     }
 
 
-    public void sendMessage(final String text, final Map<String, Long> recipient)
+    @Override
+    public void setWelcomeMessage(final String welcomeMessage)
+    {
+        throw new NotImplementedException();
+    }
+
+
+    public void sendTextMessage(final String textMessage, final Long recipientId)
     {
         final FacebookMessengerMessage facebookMessengerMessage = new FacebookMessengerMessage.Builder()
-            .withMessage(text)
-            .withRecipient(recipient)
+            .withMessage(textMessage)
+            .withRecipient(recipientId)
             .build();
 
         try
@@ -56,11 +63,11 @@ public class FacebookMessengerHandlerImpl implements FacebookMessengerHandler
     }
 
 
-    public FacebookMessengerUser getUserInformation(final Map<String, Long> user)
+    public FacebookMessengerUser getUserProfile(final Long user)
     {
         try
         {
-            final HttpResponse<FacebookMessengerUser> httpResponse = Unirest.post(this.messengerProperties.getUserEndpoint() + user.get("id"))
+            final HttpResponse<FacebookMessengerUser> httpResponse = Unirest.post(this.messengerProperties.getUserEndpoint() + user)
                 .header("Content-Type", "application/json")
                 .queryString(FIELDS_HEADER, USER_DATA)
                 .queryString(ACCESS_TOKEN, this.messengerProperties.getPageAccessToken())

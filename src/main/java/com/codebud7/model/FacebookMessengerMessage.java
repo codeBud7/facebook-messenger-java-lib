@@ -1,18 +1,15 @@
 package com.codebud7.model;
 
-import java.util.HashMap;
-import java.util.Map;
-
 /**
  * Created by s.puskeiler on 07.05.16.
  */
 public class FacebookMessengerMessage
 {
-    private final Map<String, Long> recipient;
-    private final Map<String, String> message;
+    private final Recipient recipient;
+    private final Text message;
 
 
-    private FacebookMessengerMessage(final Builder builder)
+    FacebookMessengerMessage(final Builder builder)
     {
         this.recipient = builder.recipient;
         this.message = builder.message;
@@ -21,23 +18,20 @@ public class FacebookMessengerMessage
 
     public static class Builder
     {
-        private Map<String, Long> recipient;
-        private Map<String, String> message;
+        private Recipient recipient;
+        private Text message;
 
 
         public Builder withMessage(final String message)
         {
-            final Map<String, String> messageData = new HashMap<>();
-            messageData.put("text", message);
-
-            this.message = messageData;
+            this.message = new Text(message);
             return this;
         }
 
 
-        public Builder withRecipient(final Map<String, Long> recipient)
+        public Builder withRecipient(final Long recipient)
         {
-            this.recipient = recipient;
+            this.recipient = new Recipient(recipient.toString());
             return this;
         }
 
@@ -49,26 +43,73 @@ public class FacebookMessengerMessage
     }
 
 
-    public String getRecipient()
+    private Recipient getRecipient()
     {
-        return "'id':'" + this.recipient.get("id") + "'";
+        return this.recipient;
     }
 
 
-    public String getMessage()
+    private Text getMessage()
     {
-        return "'text':'" + this.message.get("text") + "'";
+        return this.message;
     }
 
 
     public String toJson()
     {
-        final String stringBuilder = "{'recipient':{"
-            + getRecipient()
-            + "},'message':{"
-            + getMessage()
-            + "}}";
+        return "{\"recipient\":{ \"id\":\""
+            + getRecipient().getId()
+            + "\" }, \"message\":{ \"text\":\""
+            + getMessage().getText()
+            + "\"}}";
+    }
 
-        return stringBuilder;
+
+    private static class Text
+    {
+        private String text;
+
+
+        Text(final String text)
+        {
+            this.text = text;
+        }
+
+
+        public String getText()
+        {
+            return this.text;
+        }
+
+
+        public Text setText(final String text)
+        {
+            this.text = text;
+            return this;
+        }
+    }
+
+    private static class Recipient
+    {
+        private String id;
+
+
+        Recipient(final String id)
+        {
+            this.id = id;
+        }
+
+
+        public String getId()
+        {
+            return this.id;
+        }
+
+
+        public Recipient setId(final String id)
+        {
+            this.id = id;
+            return this;
+        }
     }
 }
