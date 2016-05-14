@@ -56,7 +56,7 @@ Create controller for verification
         final FacebookMessengerCallback.FacebookMessengerCallbackType facebookMessengerCallbackType = facebookMessengerCallback.getType();
         if (FacebookMessengerCallback.FacebookMessengerCallbackType.RECEIVED.equals(facebookMessengerCallbackType))
         {
-            this.exampleService.communicateWithRecipient(
+            this.exampleService.sendTextMessage(
                 facebookMessengerCallback.getMessageText(),
                 facebookMessengerCallback.getSender());
         }
