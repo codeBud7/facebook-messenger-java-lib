@@ -1,6 +1,6 @@
-package com.codebud7.service;
+package com.codebud7.facebook.messenger.service;
 
-import com.codebud7.model.FacebookMessengerUser;
+import com.codebud7.facebook.messenger.model.FacebookMessengerUser;
 
 /**
  * Created by s.puskeiler on 09.05.16.

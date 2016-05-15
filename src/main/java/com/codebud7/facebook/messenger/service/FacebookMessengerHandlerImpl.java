@@ -1,8 +1,8 @@
-package com.codebud7.service;
+package com.codebud7.facebook.messenger.service;
 
-import com.codebud7.config.MessengerProperties;
-import com.codebud7.model.FacebookMessengerMessage;
-import com.codebud7.model.FacebookMessengerUser;
+import com.codebud7.facebook.messenger.config.MessengerProperties;
+import com.codebud7.facebook.messenger.model.FacebookMessengerMessage;
+import com.codebud7.facebook.messenger.model.FacebookMessengerUser;
 import com.mashape.unirest.http.Headers;
 import com.mashape.unirest.http.HttpResponse;
 import com.mashape.unirest.http.Unirest;

@@ -1,4 +1,4 @@
-package com.codebud7.model;
+package com.codebud7.facebook.messenger.model;
 
 /**
  * Created by s.puskeiler on 07.05.16.

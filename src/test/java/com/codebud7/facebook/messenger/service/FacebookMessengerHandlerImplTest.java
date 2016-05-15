@@ -1,6 +1,6 @@
-package com.codebud7.service;
+package com.codebud7.facebook.messenger.service;
 
-import com.codebud7.config.TestMessengerProperties;
+import com.codebud7.facebook.messenger.config.TestMessengerProperties;
 import org.junit.Test;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 

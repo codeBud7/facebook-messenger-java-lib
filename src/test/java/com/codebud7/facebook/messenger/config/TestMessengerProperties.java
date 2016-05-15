@@ -1,4 +1,4 @@
-package com.codebud7.config;
+package com.codebud7.facebook.messenger.config;
 
 /**
  * Created by s.puskeiler on 13.05.16.

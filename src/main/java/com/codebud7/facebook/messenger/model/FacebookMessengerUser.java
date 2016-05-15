@@ -1,4 +1,4 @@
-package com.codebud7.model;
+package com.codebud7.facebook.messenger.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 

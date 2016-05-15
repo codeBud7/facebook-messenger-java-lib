@@ -7,7 +7,7 @@ Implement MessengerProperties interface
 *Example:*
 ```java
 @Config.Sources("classpath:messenger.properties")
-public interface MessengerProperties extends Config, com.codebud7.config.MessengerProperties
+public interface MessengerProperties extends Config, MessengerProperties
 {
     @Key("verify.token")
     @DefaultValue("foo")
