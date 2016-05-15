@@ -31,7 +31,12 @@ class FacebookMessengerHandlerImpl implements FacebookMessengerHandler
     }
 
 
-    @Override
+    public Boolean validateToken(final String verifyToken)
+    {
+        return this.messengerProperties.getVerifyToken().equals(verifyToken);
+    }
+
+
     public void setWelcomeMessage(final String welcomeMessage)
     {
         throw new NotImplementedException();

@@ -53,8 +53,7 @@ Create controller for verification
     @ResponseStatus(HttpStatus.OK)
     private void receive(@RequestBody final FacebookMessengerCallback facebookMessengerCallback)
     {
-        final FacebookMessengerCallback.FacebookMessengerCallbackType facebookMessengerCallbackType = facebookMessengerCallback.getType();
-        if (FacebookMessengerCallback.FacebookMessengerCallbackType.RECEIVED.equals(facebookMessengerCallbackType))
+        if (FacebookMessengerCallback.FacebookMessengerCallbackType.RECEIVED.equals(facebookMessengerCallback.getType()))
         {
             this.exampleService.sendTextMessage(
                 facebookMessengerCallback.getMessageText(),

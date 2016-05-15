@@ -7,6 +7,8 @@ import com.codebud7.facebook.messenger.model.FacebookMessengerUser;
  */
 public interface FacebookMessengerHandler
 {
+    Boolean validateToken(final String verifyToken);
+
     void setWelcomeMessage(final String welcomeMessage);
 
     void sendTextMessage(final String textMessage, final Long recipientId);
